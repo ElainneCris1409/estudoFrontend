@@ -9,8 +9,9 @@ function App() {
 
   // Função para buscar um usuário (GET)
   const handleGetUser = async () => {
+    const idUser = document.getElementById("idUser").value;
     try {
-      const userData = await getUser(1); // Busca usuário com ID 1
+      const userData = await getUser(idUser); // Busca usuário com ID 1
       setUser(userData); // Atualiza o estado user com os dados do usuário
       setError(null); // Limpa o estado error
     } catch (err) {
@@ -38,6 +39,10 @@ function App() {
 
         {/* Botão para buscar usuário */}
         <button onClick={handleGetUser}>Buscar Usuário</button>
+        <input
+          type="text"
+          placeholder="id"
+        id= "idUser"/>
 
         {error && <p style={{ color: "red" }}>{error}</p>}
 
