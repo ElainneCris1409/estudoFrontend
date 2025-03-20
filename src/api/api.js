@@ -1,5 +1,18 @@
 import axios from "axios";
-const url ="https://jsonplaceholder.typicode.com/users";
+const url ="http://localhost:3001/clientes"; 
+
+export const getClientes = async () => {
+  try {
+    const response = await axios.get(url);
+    return response.data;
+
+  }
+  catch (error) {
+    console.error("Erro ao buscar clientes:", error);
+    throw error; //throw é usado para lançar um erro no browser
+  }
+
+} 
 
 export const getUser = async (id) => {
     try {

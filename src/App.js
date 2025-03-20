@@ -1,7 +1,35 @@
 import { useState } from "react"; // useState é um Hook do React que gerencia o estado dentro do componente
-import { getUser, postUser } from "./api/api"; // Importa as funções da API
+import { getClientes } from "./api/api"; // Importa as funções da API
 import "./App.css"; // Importa o estilo CSS
 
+function App() {
+  const [clientes, setClientes] = useState([]); // Armazena os dados dos usuários
+
+  // Função para buscar um usuário (GET)
+  const handleGetClientes = async () => {
+    try {
+      const userData = await getClientes();
+      setClientes(userData); // Atualiza o estado user com os dados do usuário
+    } catch (err) {
+      
+      setClientes(null); // Limpa o estado user
+    }
+  };
+  handleGetClientes();
+  return (
+    <div>
+      <h1>Lista de Clientes</h1>
+      <ul>
+        {clientes.map((cliente) => (
+          <li key={cliente.cliente_id}>{cliente.nome}</li>
+        ))}
+      </ul>
+          
+    </div>
+  );
+}
+
+/*
 function App() {
   const [user, setUser] = useState(null); // Armazena os dados do usuário
   const [error, setError] = useState(null); // Armazena mensagens de erro
@@ -37,7 +65,7 @@ function App() {
       <header className="App-header">
         <h1>Consumindo API Pública com AXIOS</h1>
 
-        {/* Botão para buscar usuário */}
+      
         <button onClick={handleGetUser}>Buscar Usuário</button>
         <input
           type="text"
@@ -54,7 +82,7 @@ function App() {
           </div>
         )}
 
-        {/* Formulário para cadastrar novo usuário */}
+        
         <h2>Cadastrar Novo Usuário</h2>
         <input
           type="text"
@@ -79,5 +107,5 @@ function App() {
     </div>
   );
 }
-
+*/
 export default App;
