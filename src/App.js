@@ -1,5 +1,5 @@
 import { useState } from "react"; // useState é um Hook do React que gerencia o estado dentro do componente
-import { getClientes } from "./api/api"; // Importa as funções da API
+import { getClientes } from "./api/api.clientes"; // Importa as funções da API
 import "./App.css"; // Importa o estilo CSS
 
 function App() {
